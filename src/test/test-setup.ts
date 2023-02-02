@@ -37,6 +37,8 @@ export async function startContainer(): Promise<ContainerInstance> {
     debug: false
   });
 
+  // The uuid-ossp module provides functions to generate universally unique identifiers (UUIDs) using one of several standard algorithms. There are also functions to produce certain special UUID constants. This module is only necessary for special requirements beyond what is available in core PostgreSQL
+  // https://www.postgresql.org/docs/current/uuid-ossp.html
   await pg.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
   await pg.migrate.latest();
 
